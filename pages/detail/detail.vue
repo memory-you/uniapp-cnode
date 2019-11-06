@@ -29,24 +29,24 @@
 						</view>
 					</view>
 				</view>
-				<view class="page-detail-content"><parser :html="detail.content"></parser></view>
+				<view class="page-detail-content"><parse :html="detail.content"></parse></view>
 			</view>
 			<view class="i-whitespace"></view>
-			<replay-list :list-data="detail.replies" :count="detail.reply_count"></replay-list>
+			<replylist :list-data="detail.replies" :count="detail.reply_count"></replylist>
 		</view>
 	</view>
 </template>
 
 <script>
-import parser from '@/common/jyf-Parser/index.vue';
+import parse from '@/common/jyf-Parser/index.vue';
 import { topic } from '@/common/interface.js';
 import { formateTime } from '../../common/day.js';
-import replaylist from '@/components/information/reply-list.vue'
+import replylist from '@/components/information/reply-list.vue'
 
 export default {
 	components: {
-		parser,
-		replaylist
+		parse,
+		replylist
 	},
 	data() {
 		return {
