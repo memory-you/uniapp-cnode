@@ -1,0 +1,35 @@
+.page-home {
+  padding-top: 100rpx;
+}
+.page-home .page-home-vscroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 100rpx;
+  white-space: nowrap;
+  background: #457bbe;
+}
+.page-home .page-home-vscroll.fixed-top {
+  top: 43rpx;
+}
+.page-home .page-home-vscroll ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+.page-home .page-home-vscroll .page-home-vscroll-item {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 140rpx;
+  text-align: center;
+  line-height: 100rpx;
+  margin-right: 20rpx;
+  color: #fff;
+}
+.page-home .page-home-vscroll .page-home-vscroll-item .page-home-vscroll-text {
+  display: inline-block;
+  height: 100%;
+}
+

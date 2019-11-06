@@ -1,0 +1,128 @@
+.article-list {
+  background: #fff;
+}
+.article-list .article-list-item {
+  position: relative;
+  padding: 20rpx 30rpx 30rpx 30rpx;
+}
+.article-list .article-list-item.is-hover {
+  background: #f8f8f8;
+}
+.article-list .article-list-item .article-list-userinfo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40rpx;
+  font-size: 30rpx;
+  color: #545454;
+}
+.article-list .article-list-item .article-list-userinfo .article-list-userinfo-left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40rpx;
+}
+.article-list .article-list-item .article-list-userinfo .article-list-avatar {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #a1e6f7;
+  margin-right: 20rpx;
+}
+.article-list .article-list-item .article-list-userinfo .article-list-avatar image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.article-list .article-list-item .article-list-userinfo .article-list-time {
+  color: #c5c5c5;
+}
+.article-list .article-list-item .article-list-title {
+  font-size: 30rpx;
+  margin-top: 25rpx;
+  margin-bottom: 18rpx;
+  color: #333333;
+}
+.article-list .article-list-item .article-list-desc {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #a2a2a2;
+}
+.article-list .article-list-item .article-list-footer {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 28rpx;
+  padding-top: 20rpx;
+  margin-top: 28rpx;
+}
+.article-list .article-list-item .article-list-footer:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 50rpx;
+  height: 1px;
+  background: #d6d9e1;
+}
+.article-list .article-list-item .article-list-label {
+  width: 60rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  background-color: #49caca;
+  border-radius: 8rpx;
+  font-size: 18rpx;
+  line-height: 1.8;
+  text-align: center;
+  color: #ffffff;
+}
+.article-list .article-list-item .article-list-label.good {
+  background-color: #49caca;
+}
+.article-list .article-list-item .article-list-label.share {
+  background-color: #ff9900;
+}
+.article-list .article-list-item .article-list-label.ask {
+  background-color: #86cdff;
+}
+.article-list .article-list-item .article-list-label.job {
+  background-color: #49caca;
+}
+.article-list .article-list-item .article-list-label.dev {
+  background-color: #1aa034;
+}
+.article-list .article-list-item .article-list-fnum {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 28rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 22rpx;
+  color: #c5c5c5;
+  padding-left: 20rpx;
+}
+.article-list .article-list-item .article-list-fnum .iconfont {
+  margin-right: 8rpx;
+}
+

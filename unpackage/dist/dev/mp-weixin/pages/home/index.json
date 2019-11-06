@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "CNode",
+  "usingComponents": {
+    "article-list": "/components/information/article-list"
+  }
+}

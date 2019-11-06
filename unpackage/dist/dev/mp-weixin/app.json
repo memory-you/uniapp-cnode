@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/release/index",
+    "pages/message/index",
+    "pages/mine/index",
+    "pages/detail/detail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "CNode",
+    "navigationBarBackgroundColor": "#457bbe",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#457bbe",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "static/images/home@2x.png",
+        "selectedIconPath": "static/images/home-1@2x.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/release/index",
+        "iconPath": "static/images/release@2x.png",
+        "selectedIconPath": "static/images/release-1@2x.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/message/index",
+        "iconPath": "static/images/message@2x.png",
+        "selectedIconPath": "static/images/message-1@2x.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "static/images/mine@2x.png",
+        "selectedIconPath": "static/images/mine-1@2x.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
