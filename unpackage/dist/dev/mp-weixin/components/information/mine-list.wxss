@@ -1,0 +1,53 @@
+.mine-list-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 20rpx 30rpx;
+}
+.mine-list-item .author-thumb {
+  width: 80rpx;
+  height: 80rpx;
+  border-color: #000000;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #c8c8c8;
+}
+.mine-list-item .author-thumb image {
+  width: 100%;
+  height: 100%;
+}
+.mine-list-item .article-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 40rpx;
+  width: 80%;
+}
+.mine-list-item .article-info .article-detail {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.mine-list-item .article-info .article-detail .author-name,
+.mine-list-item .article-info .article-detail .create-time {
+  font-size: 20rpx;
+  line-height: 60rpx;
+}
+

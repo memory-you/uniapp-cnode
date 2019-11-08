@@ -1,6 +1,8 @@
 <template>
 	<view class="reply">
+		<!-- 评论区头部 -->
 		<view class="reply-title">全部评论{{ count }}</view>
+		<!-- 评论 -->
 		<view class="reply-list">
 			<view class="reply-list-item" v-if="list" v-for="(item, index) in list" :key="index">
 				<view class="reply-list-thumb"><image :src="item.author.avatar_url"></image></view>
@@ -21,16 +23,20 @@
 					</view>
 				</view>
 			</view>
+			<!-- 没有评论的时候 -->
+			<i-abnor v-if="!list.length" thumb="../../static/images/abnor.png" thumbStyle="width:238rpx;height:188rpx" text="暂无评论"></i-abnor>
 		</view>
 	</view>
 </template>
 
 <script>
-import { replyUps } from '@/common/interface.js';
-import parse from '@/common/jyf-Parser/index.vue';
+import parse from '@/components/jyf-Parser/index.vue';
+import iAbnor from '@/components/i-abnor/i-abnor.vue';
+
 export default {
 	components: {
-		parse
+		parse,
+		iAbnor
 	},
 	props: {
 		count: {
@@ -48,11 +54,6 @@ export default {
 		return {
 			list: this.listData
 		};
-	},
-	watch: {
-		listData(val) {
-			this.list = this.listData;
-		}
 	}
 };
 </script>
@@ -63,13 +64,13 @@ export default {
 		position: relative;
 		display: flex;
 		align-items: center;
-		height: 80upx;
-		padding-left: 30upx;
+		padding-left: 30rpx;
+		height: 80rpx;
 
 		&:after {
 			content: '';
 			position: absolute;
-			left: 30upx;
+			left: 30rpx;
 			right: 0;
 			bottom: 0;
 			height: 1rpx;
@@ -80,14 +81,14 @@ export default {
 	&-list {
 		&-item {
 			display: flex;
-			padding-left: 30upx;
-			padding-top: 30upx;
+			padding-left: 30rpx;
+			padding-top: 30rpx;
 		}
 
 		&-thumb {
-			width: 70upx;
-			height: 70upx;
-			margin-right: 25upx;
+			width: 70rpx;
+			height: 70rpx;
+			margin-right: 25rpx;
 			border-color: #000000;
 			border-radius: 50%;
 			overflow: hidden;
@@ -98,13 +99,14 @@ export default {
 				height: 100%;
 			}
 		}
+
 		&-info {
 			position: relative;
 			flex: 1;
 			overflow: hidden;
 			box-sizing: border-box;
-			padding-right: 30upx;
-			padding-bottom: 30upx;
+			padding-right: 30rpx;
+			padding-bottom: 30rpx;
 
 			&:after {
 				content: '';
@@ -117,27 +119,27 @@ export default {
 			}
 
 			.loginname {
-				font-size: 28upx;
+				font-size: 28rpx;
 				color: #373737;
 			}
 
 			.is-author {
 				display: inline-block;
-				padding: 0upx 10upx;
+				padding: 0rpx 10rpx;
 				background-color: #86cdff;
-				border-radius: 8upx;
-				font-size: 18upx;
+				border-radius: 8rpx;
+				font-size: 18rpx;
 				color: #ffffff;
 			}
 
 			.floor {
-				font-size: 24upx;
+				font-size: 24rpx;
 				color: #9e9e9e;
 				vertical-align: middle;
 			}
 
 			.content {
-				font-size: 28upx;
+				font-size: 28rpx;
 				box-sizing: border-box;
 				overflow: hidden;
 				color: #373737;
@@ -150,22 +152,8 @@ export default {
 				vertical-align: middle;
 
 				.like {
-					width: 120upx;
+					width: 120rpx;
 					vertical-align: middle;
-
-					.iconfont {
-						padding-right: 10upx;
-					}
-
-					&.is-active {
-						.iconfont {
-							color: rgb(68, 123, 190);
-						}
-
-						text {
-							color: rgb(69, 123, 190);
-						}
-					}
 				}
 
 				.like,
@@ -173,15 +161,16 @@ export default {
 					display: flex;
 					align-items: center;
 					vertical-align: middle;
-				}
 
-				.iconfont {
-					color: #9e9e9e;
-				}
+					.iconfont {
+						color: #9e9e9e;
+						padding-right: 10rpx;
+					}
 
-				text {
-					font-size: 24upx;
-					color: #9e9e9e;
+					text {
+						font-size: 24rpx;
+						color: #9e9e9e;
+					}
 				}
 			}
 		}

@@ -1,0 +1,130 @@
+.reply-title {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 30rpx;
+  height: 80rpx;
+}
+.reply-title:after {
+  content: '';
+  position: absolute;
+  left: 30rpx;
+  right: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e8e8e8;
+}
+.reply-list-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 30rpx;
+  padding-top: 30rpx;
+}
+.reply-list-thumb {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 25rpx;
+  border-color: #000000;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #c8c8c8;
+}
+.reply-list-thumb image {
+  width: 100%;
+  height: 100%;
+}
+.reply-list-info {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-right: 30rpx;
+  padding-bottom: 30rpx;
+}
+.reply-list-info:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #e8e8e8;
+}
+.reply-list-info .loginname {
+  font-size: 28rpx;
+  color: #373737;
+}
+.reply-list-info .is-author {
+  display: inline-block;
+  padding: 0rpx 10rpx;
+  background-color: #86cdff;
+  border-radius: 8rpx;
+  font-size: 18rpx;
+  color: #ffffff;
+}
+.reply-list-info .floor {
+  font-size: 24rpx;
+  color: #9e9e9e;
+  vertical-align: middle;
+}
+.reply-list-info .content {
+  font-size: 28rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  color: #373737;
+}
+.reply-list-info .tools {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  vertical-align: middle;
+}
+.reply-list-info .tools .like {
+  width: 120rpx;
+  vertical-align: middle;
+}
+.reply-list-info .tools .like,
+.reply-list-info .tools .comment {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  vertical-align: middle;
+}
+.reply-list-info .tools .like .iconfont,
+.reply-list-info .tools .comment .iconfont {
+  color: #9e9e9e;
+  padding-right: 10rpx;
+}
+.reply-list-info .tools .like text,
+.reply-list-info .tools .comment text {
+  font-size: 24rpx;
+  color: #9e9e9e;
+}
+

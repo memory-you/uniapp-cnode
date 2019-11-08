@@ -3,7 +3,7 @@
 }
 .page-home .page-home-vscroll {
   position: fixed;
-  top: 0;
+  top: 0rpx;
   left: 0;
   z-index: 10;
   height: 100rpx;
@@ -11,7 +11,7 @@
   background: #457bbe;
 }
 .page-home .page-home-vscroll.fixed-top {
-  top: 43rpx;
+  top: 43px;
 }
 .page-home .page-home-vscroll ::-webkit-scrollbar {
   width: 0;
@@ -22,7 +22,7 @@
   position: relative;
   display: inline-block;
   height: 100%;
-  width: 140rpx;
+  width: 20%;
   text-align: center;
   line-height: 100rpx;
   margin-right: 20rpx;
@@ -31,5 +31,23 @@
 .page-home .page-home-vscroll .page-home-vscroll-item .page-home-vscroll-text {
   display: inline-block;
   height: 100%;
+}
+.page-home .is-active .page-home-vscroll-text {
+  font-weight: bold;
+}
+.page-home .is-active .page-home-vscroll-text:after {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  content: '';
+  height: 6rpx;
+  width: 60rpx;
+  background: #fff;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 

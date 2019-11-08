@@ -144,8 +144,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _interface = __webpack_require__(/*! @/common/interface.js */ 17);
-var _day = __webpack_require__(/*! ../../common/day.js */ 25); //
+var _day = __webpack_require__(/*! @/common/day.js */ 25); //
 //
 //
 //
@@ -166,10 +171,12 @@ var _day = __webpack_require__(/*! ../../common/day.js */ 25); //
 //
 //
 //
-var articleList = function articleList() {return __webpack_require__.e(/*! import() | components/information/article-list */ "components/information/article-list").then(__webpack_require__.bind(null, /*! ../../components/information/article-list.vue */ 49));};var _default = { components: { articleList: articleList }, data: function data() {return { tabBars: [{ name: '全部', id: 'all' }, { name: '精华', id: 'good' }, { name: '分享', id: 'share' },
-      {
-        name: '问答',
-        id: 'ask' },
+//
+//
+//
+//
+//
+var articleList = function articleList() {return __webpack_require__.e(/*! import() | components/information/article-list */ "components/information/article-list").then(__webpack_require__.bind(null, /*! @/components/information/article-list.vue */ 61));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! @/components/uni-load-more/uni-load-more.vue */ 68));};var _default = { components: { articleList: articleList, loadMore: loadMore }, data: function data() {return { tabBars: [{ name: '全部', id: 'all' }, { name: '精华', id: 'good' }, { name: '分享', id: 'share' }, { name: '问答', id: 'ask' },
 
       {
         name: '招聘',
@@ -180,52 +187,21 @@ var articleList = function articleList() {return __webpack_require__.e(/*! impor
         id: 'dev' }],
 
 
-      list: [
-      {
-        id: 'all',
-        top: 0,
-        page: 1,
-        data: [] },
-
-      {
-        id: 'good',
-        top: 0,
-        page: 1,
-        data: [] },
-
-      {
-        id: 'share',
-        top: 0,
-        page: 1,
-        data: [] },
-
-      {
-        id: 'ask',
-        top: 0,
-        page: 1,
-        data: [] },
-
-      {
-        id: 'job',
-        top: 0,
-        page: 1,
-        data: [] },
-
-      {
-        id: 'dev',
-        top: 0,
-        page: 1,
-        data: [] }],
-
-
       currentData: {
         id: 'all',
         list: [] },
 
       tabIndex: 0,
       page: 1,
+      toView: 'all',
       scrollTop: 0,
-      isFirst: true };
+      isFirst: true,
+      loadingType: 0,
+      loadingText: {
+        contentdown: '上拉显示更多',
+        contentrefresh: '正在加载...',
+        contentnomore: '没有更多数据了' } };
+
 
   },
   onLoad: function onLoad() {
@@ -235,6 +211,24 @@ var articleList = function articleList() {return __webpack_require__.e(/*! impor
     this.loadData(this.tabIndex, this.page);
   },
   methods: {
+    // tab切换触发的滑动效果和文章加载
+    tabHandle: function tabHandle(index) {
+      uni.showLoading({
+        title: '加载中' });
+
+      this.tabIndex = index;
+      switch (index) {
+        case 0:
+        case 1:
+        case 2:
+          this.toView = this.tabBars[0].id;
+          break;
+        default:
+          this.toView = this.tabBars[3].id;}
+
+      this.loadData(index);
+    },
+    // 将英文标题转为对应中文
     getLabel: function getLabel(tab) {
       var label = '';
       this.tabBars.forEach(function (item) {
@@ -244,9 +238,9 @@ var articleList = function articleList() {return __webpack_require__.e(/*! impor
       });
       return label;
     },
+    // 从API中获取数据
     loadData: function loadData(index) {var _this = this;var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
       var id = this.tabBars[index].id;
-      var list = this.list[index];
       (0, _interface.topics)({
         limit: 5,
         page: page,
@@ -285,6 +279,9 @@ var articleList = function articleList() {return __webpack_require__.e(/*! impor
           }
         }
       });
+      setTimeout(function () {
+        uni.hideLoading();
+      }, 500);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

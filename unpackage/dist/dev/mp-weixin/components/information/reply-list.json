@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "parse": "/components/jyf-Parser/index",
+    "i-abnor": "/components/i-abnor/i-abnor"
+  },
+  "component": true
+}

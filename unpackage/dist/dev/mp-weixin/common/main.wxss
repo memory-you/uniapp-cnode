@@ -1656,7 +1656,10 @@ view{
 	height: 0;
 }
 /*底部tabbar*/
-uni-tabbar .uni-tabbar__icon{
+.uni-tabbar {
+	height: 80rpx;
+}
+.uni-tabbar .uni-tabbar__icon{
 	width: 50rpx;
 	height: 50rpx;
 }

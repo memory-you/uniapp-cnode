@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/release/index",
     "pages/message/index",
     "pages/mine/index",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/login/index"
   ],
   "subPackages": [],
   "window": {
@@ -24,12 +24,6 @@
         "iconPath": "static/images/home@2x.png",
         "selectedIconPath": "static/images/home-1@2x.png",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/release/index",
-        "iconPath": "static/images/release@2x.png",
-        "selectedIconPath": "static/images/release-1@2x.png",
-        "text": "发布"
       },
       {
         "pagePath": "pages/message/index",

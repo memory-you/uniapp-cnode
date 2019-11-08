@@ -1,59 +1,92 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {accesstoken} from '@/common/interface.js'
+import {
+	accesstoken,
+	user_detail,
+	topic_collect
+} from '@/common/interface.js'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
 		isLogin: false,
 		accessToken: "",
-		userInfo:{}
+		userInfo: {},
+		topicInfo: []
 	},
 	mutations: {
-		SET_LOGIN(state,payload){
-			state.isLogin=payload
+		SET_LOGIN(state, data) {
+			state.isLogin = data
 		},
-		SET_ACCESS_TOKEN(state,payload){
-			state.accessToken=payload
+		SET_ACCESS_TOKEN(state, data) {
+			state.accessToken = data
 		},
-		SET_USER_INFO(state,payload){
-			state.userInfo = payload
+		SET_USER_INFO(state, data) {
+			state.userInfo = data
+		},
+		SET_TOPIC_INFO(state, data) {
+			state.topicInfo = data
 		}
 	},
 	actions: {
 		// 获取用户信息
-		getUserInfo({commit,state},payload) {
-			let {accessToken,callback} = payload
-			
-			accesstoken({'accesstoken': accessToken}).then(res=>{
-				if(res.statusCode===200 && res.data.success){
-					commit('SET_USER_INFO',res.data)
-					commit('SET_ACCESS_TOKEN',accessToken)
-					commit('SET_LOGIN',true)
+		getUserInfo({
+			commit,
+			state,
+			dispatch
+		}, data) {
+			let {
+				accessToken,
+				callback
+			} = data
+
+			accesstoken({
+				'accesstoken': accessToken
+			}).then(res => {
+				if (res.statusCode === 200 && res.data.success) {
+					user_detail(res.data.loginname).then(res => {
+						commit('SET_USER_INFO', res.data.data)
+					})
+					dispatch('getTopicInfo', res.data.loginname)
+					commit('SET_ACCESS_TOKEN', accessToken)
+					commit('SET_LOGIN', true)
 					uni.setStorage({
-						key:'accessToken',
-						data:accessToken,
+						key: 'accessToken',
+						data: accessToken,
 						success() {
-							if(callback){
+							if (callback) {
 								callback()
 							}
 						}
 					})
-					
-				}else{
+
+				} else {
 					uni.showToast({
-						title:res.data.error_msg,
-						icon:'none'
+						title: res.data.error_msg,
+						icon: 'none'
 					})
 				}
 			})
 		},
-		checkLogin({commit,dispatch}){
+		// 获取用户收藏主题
+		getTopicInfo({
+			commit
+		}, data) {
+			topic_collect(data).then(res => {
+				commit('SET_TOPIC_INFO', res.data.data)
+			})
+		},
+		// 检验登录与否
+		checkLogin({
+			commit,
+			dispatch
+		}) {
 			uni.getStorage({
-				key:'accessToken',
+				key: 'accessToken',
 				success(res) {
-					console.log(res);
-					dispatch('getUserInfo',{accessToken:res.data})
+					dispatch('getUserInfo', {
+						accessToken: res.data
+					})
 				},
 				fail() {
 					console.log('获取token失败')
@@ -61,11 +94,13 @@ const store = new Vuex.Store({
 			})
 		},
 		// 注销
-		logout({commit}){
-			console.log('注销')
-			commit('SET_USER_INFO',{})
-			commit('SET_ACCESS_TOKEN','')
-			commit('SET_LOGIN',false)
+		logout({
+			commit
+		}) {
+			commit('SET_TOPIC_INFO', [])
+			commit('SET_USER_INFO', {})
+			commit('SET_ACCESS_TOKEN', '')
+			commit('SET_LOGIN', false)
 			uni.clearStorage()
 		}
 	}

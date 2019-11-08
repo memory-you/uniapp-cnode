@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "详情",
-  "usingComponents": {}
+  "usingComponents": {
+    "parse": "/components/jyf-Parser/index",
+    "replylist": "/components/information/reply-list"
+  }
 }

@@ -15,7 +15,7 @@
 			</view>
 			<view class="article-list-desc i-ellipsis-2">{{ item.content }}</view>
 			<view class="article-list-footer">
-				<view class="article-list-label">{{ item.label }}</view>
+				<view class="article-list-label" :class="item.tab">{{ item.label }}</view>
 				<view class="article-list-fnum">
 					<view class="iconfont icon-eye"></view>
 					{{ item.visit_count }}
@@ -52,7 +52,7 @@ export default {
 
 	.article-list-item {
 		position: relative;
-		padding: 20upx 30upx 30upx 30upx;
+		padding: 20rpx 30rpx 30rpx 30rpx;
 
 		&.is-hover {
 			background: #f8f8f8;
@@ -62,23 +62,23 @@ export default {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			height: 40upx;
-			font-size: 30upx;
+			height: 40rpx;
+			font-size: 30rpx;
 			color: #545454;
 
 			.article-list-userinfo-left {
 				display: flex;
 				align-items: center;
-				height: 40upx;
+				height: 40rpx;
 			}
 
 			.article-list-avatar {
-				width: 40upx;
-				height: 40upx;
+				width: 40rpx;
+				height: 40rpx;
 				border-radius: 50%;
 				overflow: hidden;
 				background-color: #a1e6f7;
-				margin-right: 20upx;
+				margin-right: 20rpx;
 				image {
 					display: block;
 					width: 100%;
@@ -92,42 +92,42 @@ export default {
 		}
 
 		.article-list-title {
-			font-size: 30upx;
-			margin-top: 25upx;
-			margin-bottom: 18upx;
+			font-size: 30rpx;
+			margin-top: 25rpx;
+			margin-bottom: 18rpx;
 			color: #333333;
 		}
 
 		.article-list-desc {
-			font-size: 24upx;
-			line-height: 36upx;
+			font-size: 24rpx;
+			line-height: 36rpx;
 			color: #a2a2a2;
 		}
 
 		.article-list-footer {
 			position: relative;
 			display: flex;
-			height: 28upx;
-			padding-top: 20upx;
-			margin-top: 28upx;
+			height: 28rpx;
+			padding-top: 20rpx;
+			margin-top: 28rpx;
 			&:after {
 				position: absolute;
 				left: 0;
 				top: 0;
 				content: '';
-				width: 50upx;
+				width: 50rpx;
 				height: 1px;
 				background: #d6d9e1;
 			}
 		}
 
 		.article-list-label {
-			width: 60upx;
-			height: 32upx;
-			line-height: 32upx;
+			width: 60rpx;
+			height: 32rpx;
+			line-height: 32rpx;
 			background-color: #49caca;
-			border-radius: 8upx;
-			font-size: 18upx;
+			border-radius: 8rpx;
+			font-size: 18rpx;
 			line-height: 1.8;
 			text-align: center;
 			color: #ffffff;
@@ -150,13 +150,13 @@ export default {
 
 		.article-list-fnum {
 			display: flex;
-			height: 28upx;
+			height: 28rpx;
 			align-items: center;
-			font-size: 22upx;
+			font-size: 22rpx;
 			color: #c5c5c5;
-			padding-left: 20upx;
+			padding-left: 20rpx;
 			.iconfont {
-				margin-right: 8upx;
+				margin-right: 8rpx;
 			}
 		}
 	}

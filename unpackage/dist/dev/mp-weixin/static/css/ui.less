@@ -8,7 +8,7 @@
 }
 .iconfont {
   font-family:"iconfont" !important;
-  font-size:30upx;
+  font-size:30rpx;
   font-style:normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -49,7 +49,7 @@
 .icon-saoma:before { content: "\e6cb"; }
 /*通用 */
 view{
-	font-size:28upx; 
+	font-size:28rpx; 
 	line-height:1.8;
 }
 /*去除滚动条*/ 
@@ -58,9 +58,12 @@ view{
 	height: 0;
 }
 /*底部tabbar*/ 
-uni-tabbar .uni-tabbar__icon{
-	width: 50upx;
-	height: 50upx;
+.uni-tabbar {
+	height: 80rpx;
+}
+.uni-tabbar .uni-tabbar__icon{
+	width: 50rpx;
+	height: 50rpx;
 }
 /*文字*/ 
 .i-ellipsis{
@@ -78,6 +81,6 @@ uni-tabbar .uni-tabbar__icon{
 @import './i-cell.less';
 
 .i-whitespace{
-	height: 20upx;
+	height: 20rpx;
 	background: #f8f8f8;
 }

@@ -1,0 +1,1 @@
+<view class="i-abnor" style="{{'height:'+(height)+';'}}"><image class="i-abnor__thumb" style="{{'width:'+('280upx')+';'+('height:'+('220upx')+';')}}" src="{{thumb}}" mode="scaleToFill"></image><view class="i-abnor__text" style="{{(textStyle)}}">{{text}}</view><slot></slot></view>

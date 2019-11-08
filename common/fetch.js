@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import store from '../store/index.js'
-const cnode = 'https://cnodejs.org';
 
 export default function(config) {
 	let {
@@ -17,7 +16,6 @@ export default function(config) {
 	if (method === 'POST') {
 		data = Object.assign(params, data)
 	}
-	console.log(data);
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url,
