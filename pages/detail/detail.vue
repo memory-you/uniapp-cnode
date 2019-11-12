@@ -56,7 +56,7 @@ export default {
 		replylist
 	},
 	computed: {
-		...mapState(['topicInfo','userInfo'])
+		...mapState(['topicInfo', 'userInfo'])
 	},
 	data() {
 		return {

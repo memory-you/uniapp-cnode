@@ -39,17 +39,17 @@ export function deCollect(data) {
 }
 
 // 用户收藏详情
-export function topic_collect(data) {
+export function topic_collect(id) {
 	return fetch({
-		url: cnode + '/api/v1/topic_collect/' + data,
+		url: cnode + '/api/v1/topic_collect/' + id,
 		method: 'GET',
 	})
 }
 
 // 用户信息详情
-export function user_detail(data) {
+export function user_detail(loginname) {
 	return fetch({
-		url: cnode + '/api/v1/user/' + data,
+		url: cnode + '/api/v1/user/' + loginname,
 		method: 'GET',
 	})
 }
@@ -60,5 +60,39 @@ export function accesstoken(data) {
 		url: cnode + '/api/v1/accesstoken',
 		method: 'POST',
 		data
+	})
+}
+
+// 获取未读信息数
+export function unread_count(data) {
+	return fetch({
+		url: cnode + '/api/v1/message/count',
+		method: 'GET',
+		data
+	})
+}
+
+// 获取已读和未读信息
+export function messages(data) {
+	return fetch({
+		url: cnode + '/api/v1/messages',
+		method: 'GET',
+		data
+	})
+}
+
+// 标记全部已读
+export function mark_all() {
+	return fetch({
+		url: cnode + '/api/v1/message/mark_all',
+		method: 'POST',
+	})
+}
+
+// 标记单个信息为已读
+export function mark_one(id) {
+	return fetch({
+		url: cnode + '/api/v1/message/mark_one/' + id,
+		method: 'POST',
 	})
 }

@@ -1,0 +1,84 @@
+.message-item {
+  padding: 30rpx 30rpx;
+  border-bottom: 1px solid #1aad19;
+}
+.message-item .author-thumb {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 10rpx;
+}
+.message-item .author-thumb .author-img {
+  padding-right: 20rpx;
+}
+.message-item .author-thumb .author-img image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+.message-item .author-thumb .message-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.message-item .author-thumb .message-info .author-one {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.message-item .author-thumb .message-info .author-one .author-name {
+  font-size: 28rpx;
+  color: #373737;
+}
+.message-item .author-thumb .message-info .author-two {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.message-item .author-thumb .message-info .author-two .message-type {
+  font-size: 20rpx;
+  color: #9e9e9e;
+}
+.message-item .author-thumb .message-info .author-two .message-read {
+  margin-right: 20rpx;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background-color: #df5000;
+}
+.message-item .message-content {
+  padding-bottom: 20rpx;
+}
+.message-item .article-info {
+  background: #999999;
+  border-radius: 6rpx;
+  padding: 10rpx 20rpx;
+  color: #fff;
+}
+

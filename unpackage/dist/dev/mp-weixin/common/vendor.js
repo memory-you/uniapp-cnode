@@ -1622,6 +1622,7 @@ var _interface = __webpack_require__(/*! @/common/interface.js */ 17);function _
 
 
 
+
 _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
@@ -1629,7 +1630,9 @@ var store = new _vuex.default.Store({
     isLogin: false,
     accessToken: "",
     userInfo: {},
-    topicInfo: [] },
+    topicInfo: [],
+    readMessages: [],
+    notreadMessages: [] },
 
   mutations: {
     SET_LOGIN: function SET_LOGIN(state, data) {
@@ -1643,6 +1646,12 @@ var store = new _vuex.default.Store({
     },
     SET_TOPIC_INFO: function SET_TOPIC_INFO(state, data) {
       state.topicInfo = data;
+    },
+    SET_READMESSAGES: function SET_READMESSAGES(state, data) {
+      state.readMessages = data;
+    },
+    SET_NOTREADMESSAGES: function SET_NOTREADMESSAGES(state, data) {
+      state.notreadMessages = data;
     } },
 
   actions: {
@@ -1666,6 +1675,9 @@ var store = new _vuex.default.Store({
           });
           dispatch('getTopicInfo', res.data.loginname);
           commit('SET_ACCESS_TOKEN', accessToken);
+          dispatch('getMessages', {
+            'accesstoken': accessToken });
+
           commit('SET_LOGIN', true);
           uni.setStorage({
             key: 'accessToken',
@@ -1693,11 +1705,21 @@ var store = new _vuex.default.Store({
         commit('SET_TOPIC_INFO', res.data.data);
       });
     },
+    // 获取用户已读与未读消息
+    getMessages: function getMessages(_ref3,
+
+    data) {var commit = _ref3.commit;
+
+      (0, _interface.messages)(data).then(function (res) {
+        commit('SET_READMESSAGES', res.data.data.has_read_messages);
+        commit('SET_NOTREADMESSAGES', res.data.data.hasnot_read_messages);
+      });
+    },
     // 检验登录与否
-    checkLogin: function checkLogin(_ref3)
+    checkLogin: function checkLogin(_ref4)
 
 
-    {var commit = _ref3.commit,dispatch = _ref3.dispatch;
+    {var commit = _ref4.commit,dispatch = _ref4.dispatch;
       uni.getStorage({
         key: 'accessToken',
         success: function success(res) {
@@ -1711,9 +1733,9 @@ var store = new _vuex.default.Store({
 
     },
     // 注销
-    logout: function logout(_ref4)
+    logout: function logout(_ref5)
 
-    {var commit = _ref4.commit;
+    {var commit = _ref5.commit;
       commit('SET_TOPIC_INFO', []);
       commit('SET_USER_INFO', {});
       commit('SET_ACCESS_TOKEN', '');
@@ -2687,7 +2709,7 @@ var index_esm = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.topics = topics;exports.topic = topic;exports.collect = collect;exports.deCollect = deCollect;exports.topic_collect = topic_collect;exports.user_detail = user_detail;exports.accesstoken = accesstoken;var _fetch = _interopRequireDefault(__webpack_require__(/*! ./fetch.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.topics = topics;exports.topic = topic;exports.collect = collect;exports.deCollect = deCollect;exports.topic_collect = topic_collect;exports.user_detail = user_detail;exports.accesstoken = accesstoken;exports.unread_count = unread_count;exports.messages = messages;exports.mark_all = mark_all;exports.mark_one = mark_one;var _fetch = _interopRequireDefault(__webpack_require__(/*! ./fetch.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 var cnode = 'https://cnodejs.org';
 
 
@@ -2728,17 +2750,17 @@ function deCollect(data) {
 }
 
 // 用户收藏详情
-function topic_collect(data) {
+function topic_collect(id) {
   return (0, _fetch.default)({
-    url: cnode + '/api/v1/topic_collect/' + data,
+    url: cnode + '/api/v1/topic_collect/' + id,
     method: 'GET' });
 
 }
 
 // 用户信息详情
-function user_detail(data) {
+function user_detail(loginname) {
   return (0, _fetch.default)({
-    url: cnode + '/api/v1/user/' + data,
+    url: cnode + '/api/v1/user/' + loginname,
     method: 'GET' });
 
 }
@@ -2749,6 +2771,40 @@ function accesstoken(data) {
     url: cnode + '/api/v1/accesstoken',
     method: 'POST',
     data: data });
+
+}
+
+// 获取未读信息数
+function unread_count(data) {
+  return (0, _fetch.default)({
+    url: cnode + '/api/v1/message/count',
+    method: 'GET',
+    data: data });
+
+}
+
+// 获取已读和未读信息
+function messages(data) {
+  return (0, _fetch.default)({
+    url: cnode + '/api/v1/messages',
+    method: 'GET',
+    data: data });
+
+}
+
+// 标记全部已读
+function mark_all() {
+  return (0, _fetch.default)({
+    url: cnode + '/api/v1/message/mark_all',
+    method: 'POST' });
+
+}
+
+// 标记单个信息为已读
+function mark_one(id) {
+  return (0, _fetch.default)({
+    url: cnode + '/api/v1/message/mark_one/' + id,
+    method: 'POST' });
 
 }
 
@@ -9790,7 +9846,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 87:
+/***/ 94:
 /*!************************************************************!*\
   !*** F:/MiniProgram/cnode/components/jyf-Parser/Parser.js ***!
   \************************************************************/
@@ -9799,8 +9855,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 "use strict";
  //Parser.js
-var Tokenizer = __webpack_require__(/*! ./Tokenizer.js */ 88);
-var DomHandler = __webpack_require__(/*! ./DomHandler.js */ 89);
+var Tokenizer = __webpack_require__(/*! ./Tokenizer.js */ 95);
+var DomHandler = __webpack_require__(/*! ./DomHandler.js */ 96);
 var trustAttrs = {
   align: true,
   alt: true,
@@ -10038,7 +10094,7 @@ module.exports = html2nodes;
 
 /***/ }),
 
-/***/ 88:
+/***/ 95:
 /*!***************************************************************!*\
   !*** F:/MiniProgram/cnode/components/jyf-Parser/Tokenizer.js ***!
   \***************************************************************/
@@ -10267,7 +10323,7 @@ module.exports = Tokenizer;
 
 /***/ }),
 
-/***/ 89:
+/***/ 96:
 /*!****************************************************************!*\
   !*** F:/MiniProgram/cnode/components/jyf-Parser/DomHandler.js ***!
   \****************************************************************/
@@ -10280,9 +10336,9 @@ var emoji;
 try {
   emoji = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './emoji.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 } catch (err) {}
-var CssHandler = __webpack_require__(/*! ./CssHandler.js */ 90);
+var CssHandler = __webpack_require__(/*! ./CssHandler.js */ 97);
 
-var CanIUse = __webpack_require__(/*! ./api.js */ 91).versionHigherThan('2.7.1');
+var CanIUse = __webpack_require__(/*! ./api.js */ 98).versionHigherThan('2.7.1');
 
 var trustTag = {
   a: 0,
@@ -10661,7 +10717,7 @@ module.exports = DomHandler;
 
 /***/ }),
 
-/***/ 90:
+/***/ 97:
 /*!****************************************************************!*\
   !*** F:/MiniProgram/cnode/components/jyf-Parser/CssHandler.js ***!
   \****************************************************************/
@@ -10671,7 +10727,7 @@ module.exports = DomHandler;
 "use strict";
  //CssHandler.js
 
-var CanIUse = __webpack_require__(/*! ./api.js */ 91).versionHigherThan('2.7.1');
+var CanIUse = __webpack_require__(/*! ./api.js */ 98).versionHigherThan('2.7.1');
 
 function CssHandler(style, tagStyle) {
   this._style = new CssTokenizer(style, tagStyle).parse();
@@ -10830,7 +10886,7 @@ module.exports = CssHandler;
 
 /***/ }),
 
-/***/ 91:
+/***/ 98:
 /*!*********************************************************!*\
   !*** F:/MiniProgram/cnode/components/jyf-Parser/api.js ***!
   \*********************************************************/
@@ -10871,11 +10927,11 @@ module.exports = {
   },
 
   html2nodes: function html2nodes(html, tagStyle) {
-    var Parser = __webpack_require__(/*! ./Parser.js */ 87);
+    var Parser = __webpack_require__(/*! ./Parser.js */ 94);
     return Parser(html, tagStyle);
   },
   css2object: function css2object(style, tagStyle) {
-    var CssHandler = __webpack_require__(/*! ./CssHandler.js */ 90);
+    var CssHandler = __webpack_require__(/*! ./CssHandler.js */ 97);
     return new CssHandler(style, tagStyle)._style;
   } };
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

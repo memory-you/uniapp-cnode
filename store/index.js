@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 import {
 	accesstoken,
 	user_detail,
-	topic_collect
+	topic_collect,
+	messages
 } from '@/common/interface.js'
 Vue.use(Vuex)
 
@@ -12,7 +13,9 @@ const store = new Vuex.Store({
 		isLogin: false,
 		accessToken: "",
 		userInfo: {},
-		topicInfo: []
+		topicInfo: [],
+		readMessages: [],
+		notreadMessages: []
 	},
 	mutations: {
 		SET_LOGIN(state, data) {
@@ -26,6 +29,12 @@ const store = new Vuex.Store({
 		},
 		SET_TOPIC_INFO(state, data) {
 			state.topicInfo = data
+		},
+		SET_READMESSAGES(state, data) {
+			state.readMessages = data
+		},
+		SET_NOTREADMESSAGES(state, data) {
+			state.notreadMessages = data
 		}
 	},
 	actions: {
@@ -49,6 +58,9 @@ const store = new Vuex.Store({
 					})
 					dispatch('getTopicInfo', res.data.loginname)
 					commit('SET_ACCESS_TOKEN', accessToken)
+					dispatch('getMessages', {
+						'accesstoken': accessToken
+					})
 					commit('SET_LOGIN', true)
 					uni.setStorage({
 						key: 'accessToken',
@@ -74,6 +86,16 @@ const store = new Vuex.Store({
 		}, data) {
 			topic_collect(data).then(res => {
 				commit('SET_TOPIC_INFO', res.data.data)
+			})
+		},
+		// 获取用户已读与未读消息
+		getMessages({
+			commit
+		}, data) {
+
+			messages(data).then(res => {
+				commit('SET_READMESSAGES', res.data.data.has_read_messages);
+				commit('SET_NOTREADMESSAGES', res.data.data.hasnot_read_messages);
 			})
 		},
 		// 检验登录与否

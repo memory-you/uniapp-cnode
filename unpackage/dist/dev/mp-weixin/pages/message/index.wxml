@@ -1,1 +1,1 @@
-<view></view>
+<view class="message"><block wx:for="{{notreadmessages}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><view class="notread-message-list"><message-item vue-id="{{'1-'+__i0__}}" message="{{item}}" bind:__l="__l"></message-item></view></block><block wx:for="{{readmessages}}" wx:for-item="item" wx:for-index="__i1__" wx:key="id"><view class="read-message-list"><message-item vue-id="{{'2-'+__i1__}}" message="{{item}}" bind:__l="__l"></message-item></view></block></view>

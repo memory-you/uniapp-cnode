@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/information/article-list":1,"components/uni-load-more/uni-load-more":1,"components/information/mine-list":1,"components/jyf-Parser/index":1,"components/information/reply-list":1,"components/jyf-Parser/trees":1,"components/i-abnor/i-abnor":1};
+/******/ 		var cssChunks = {"components/information/article-list":1,"components/uni-load-more/uni-load-more":1,"components/information/message-item":1,"components/information/mine-list":1,"components/jyf-Parser/index":1,"components/information/reply-list":1,"components/jyf-Parser/trees":1,"components/i-abnor/i-abnor":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/information/article-list":"components/information/article-list","components/uni-load-more/uni-load-more":"components/uni-load-more/uni-load-more","components/information/mine-list":"components/information/mine-list","components/jyf-Parser/index":"components/jyf-Parser/index","components/information/reply-list":"components/information/reply-list","components/jyf-Parser/trees":"components/jyf-Parser/trees","components/i-abnor/i-abnor":"components/i-abnor/i-abnor"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/information/article-list":"components/information/article-list","components/uni-load-more/uni-load-more":"components/uni-load-more/uni-load-more","components/information/message-item":"components/information/message-item","components/information/mine-list":"components/information/mine-list","components/jyf-Parser/index":"components/jyf-Parser/index","components/information/reply-list":"components/information/reply-list","components/jyf-Parser/trees":"components/jyf-Parser/trees","components/i-abnor/i-abnor":"components/i-abnor/i-abnor"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

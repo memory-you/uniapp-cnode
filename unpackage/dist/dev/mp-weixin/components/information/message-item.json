@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "parse": "/components/jyf-Parser/index"
+  },
+  "component": true
+}
